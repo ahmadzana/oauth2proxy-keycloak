@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak-postgres
+spec:
+  selector:
+    matchLabels:
+      app: keycloak-postgres
+  template:
+    metadata:
+      labels:
+        app: keycloak-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: bitnami/postgresql:15.3.0-debian-11-r76
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5432
+        envFrom:
+            - secretRef:
+               name: keycloak-env
+        volumeMounts:
+          - name: postgres-data
+            mountPath: /bitnami/postgresql
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim: 
+              claimName: postgres-keycloak-pvc
+          
