@@ -21,7 +21,7 @@ To deploy OAuth2 Proxy with Keycloak, follow these steps:
 1. Clone this repository:
 
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/ahmadzana/oauth2proxy-keycloak.git)
    cd #oauth2proxy-keycloak
 
 2. configure the following environment variables for your Keycloak deployment. These variables are typically stored in a `.env` file located in the `keycloak/` directory:
