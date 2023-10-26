@@ -24,10 +24,12 @@ To deploy OAuth2 Proxy with Keycloak, follow these steps:
    git clone https://github.com/ahmadzana/oauth2proxy-keycloak.git
    cd #oauth2proxy-keycloak
 
-2. configure the following environment variables for your Keycloak deployment. These variables are typically stored in a `.env` file located in the `keycloak/` directory:
 
 
 # KeyCloak
+
+1. configure the following environment variables for your Keycloak deployment. These variables are typically stored in a `.env` file located in the `keycloak/` directory:
+
 ```
 KC_DB: Specifies the database type used by Keycloak (in this case, PostgreSQL).
 KC_DB_PASSWORD: The password for the Keycloak database.
@@ -44,9 +46,25 @@ POSTGRESQL_PASSWORD: The password for the PostgreSQL database.
 DATABASE__PORT: The port number for the PostgreSQL database.
 
 ```
-3. Deploy the resources:
+2. Deploy the resources:
 
 Use kubectl and Kustomize to apply the deployment:
 ```bash
 kustomize build | kubectl apply -f -
 ```
+
+#Oauth2-Proxy
+
+Installing OAuth2 Proxy
+To install OAuth2 Proxy, I recommend using the OAuth2 Proxy Helm chart. The Helm chart allows for easier management and customization of OAuth2 Proxy. Here are the steps to install OAuth2 Proxy:
+
+1. Add the OAuth2 Proxy Helm chart repository:
+ ```bash
+helm repo add oauth2-proxy https://oauth2-proxy.github.io/manifests
+```
+2. Tweak and edit helm-deployment.yaml based on your needs.
+3. Install the repo
+```bash
+helm install oauth2-proxy oauth2-proxy/oauth2-proxy -f values.yaml
+```
+
