@@ -65,6 +65,6 @@ helm repo add oauth2-proxy https://oauth2-proxy.github.io/manifests
 2. Tweak and edit helm-deployment.yaml based on your needs.
 3. Install the repo
 ```bash
-helm install oauth2-proxy oauth2-proxy/oauth2-proxy -f values.yaml
+helm install oauth2-proxy oauth2-proxy/oauth2-proxy -f OAuth2-Proxy/helm-deployment.yaml
 ```
 
